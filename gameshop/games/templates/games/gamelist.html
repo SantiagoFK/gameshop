@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Game Shop | List </title>
+    </head>
+    <body>
+        <h1>Game List</h1>
+        
+        <ul>
+            {% for game in games %}
+            <li> Title: {{ game.title }} </li>
+            <li> Developer: {{ game.developer }}</li>
+            <li> Price: ${{ game.price }}</li>
+            <li> Release: {{ game.release }}</li>
+            {% endfor %}
+        </ul>
+        
+    </body>
+</html>
