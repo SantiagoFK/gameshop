@@ -1,21 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Game Shop | List </title>
-    </head>
-    <body>
-        <h1>Game List</h1>
-        
-        <ul>
-            {% for game in games %}
-            <li> Title: {{ game.title }} </li>
-            <li> Developer: {{ game.developer }}</li>
-            <li> Price: ${{ game.price }}</li>
-            <li> Release: {{ game.release }}</li>
-            {% endfor %}
-        </ul>
-        
-    </body>
-</html>
+{% extends 'base/layout.html' %}
+
+{% load static %}
+
+{% block title %} Game List {% endblock title %}
+
+{% block content %}
+    <h3 class="display-4 text-center mb-3"> New Games! </h3>
+    <div class="card mb-3 text-center m-auto" style="max-width: 90%;">
+        <img src="{% static 'img/cyberpunk2.jpg' %}" class="card-img-top" alt="cyber">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+        </div>
+    </div>
+
+    <div class="card mb-3 text-center m-auto" style="max-width: 90%;">
+        <img src="{% static 'img/mortal1.jpg' %}" class="card-img-top" alt="cyber">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+        </div>
+    </div>
+
+    <div class="card mb-3 text-center m-auto" style="max-width: 90%">
+        <img src="{% static 'img/alien1.webp' %}" class="card-img-top" alt="cyber">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+        </div>
+    </div>
+
+    <ul>
+        {% for game in games %}
+        <li> Title: {{ game.title }} </li>
+        <li> Developer: {{ game.developer }}</li>
+        <li> Price: ${{ game.price }}</li>
+        <li> Release: {{ game.release }}</li>
+        {% endfor %}
+    </ul>
+{% endblock content %}
