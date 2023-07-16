@@ -33,26 +33,22 @@
       </div>
   </div>
 
-  <!--
-  <ul>
-      {% for game in games %}
-      <li> <strong>Title: </strong> {{ game.title }} </li>
-      <li> <strong>Developer:</strong> {{ game.developer }}</li>
-      <li> <strong>Price:</strong> ${{ game.price }}</li>
-      <li> <strong>Release:</strong> {{ game.release }}</li><br>
-      {% endfor %}
-  </ul>-->
+  <!-- price should be in each card, all the other info can go to details of each-->
 
-  {%for game in games %}
+  {% for game in games %}
+
     <div class="card" style="width: 18rem;">
-      {% if game.cover %}
+
+      {% if game.cover %} <!-- check if there's an image cover -->
         <img src="{{ game.cover.url }}" class="card-img-top" alt="game cover">
       {% endif %}
+
       <div class="card-body">
         <h5 class="card-title">{{ game.title }}</h5>
-        <a href="#" class="btn btn-primary">To Market</a>
+        <a href="{% url 'gamedetail' game.id %}" class="btn btn-primary">Details</a>
       </div>
     </div>
+
   {% endfor %}
 
 {% endblock content %}

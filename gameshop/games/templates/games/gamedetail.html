@@ -1,0 +1,21 @@
+{% extends 'base/layout.html' %}
+
+{% load static %}
+
+{% block title %} Details {% endblock title %}
+
+{% block content %}
+
+    <h3 class="display-4 text-center"> {{ game.title }} </h3>
+
+    {% if game.cover %}
+    <div>
+        <img src="{{ game.cover.url }}" alt="game cover">
+    </div>
+    {% endif %}
+
+    <h4> <strong>Developer:</strong> {{ game.developer }} </h4>
+    <h4> <strong>Price:</strong> ${{ game.price }} </h4>
+    <h4> <strong>Release:</strong> {{ game.release }} </h4>
+
+{% endblock content %}
