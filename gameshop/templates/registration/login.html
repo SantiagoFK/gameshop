@@ -4,10 +4,10 @@
 {% block title %} Login {% endblock title %}
 
 {% block content %}
-    <h1 class="display-4 text-center">Login view </h1>
+    <h1 class="display-4 text-center">Login</h1>
 
     {% if form.errors %}
-        <p>Incorrect username or password.</p>
+        <p>Incorrect username or password. Please try again.</p>
     {% else %}
         <p>Use the following form to login:</p>
     {% endif%}
@@ -18,5 +18,9 @@
         <input type="hidden" name="next" value="{{next}}">
         <button type='submit'>Submit</button>
     </form>
+
+    <p>
+        <a href="{% url 'password_reset' %}">Forgotten your password?</a>
+    </p>
 
 {% endblock content %}

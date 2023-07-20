@@ -1,0 +1,16 @@
+{% extends 'base/layout.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} Register {% endblock title %}
+
+{% block content %}
+    <h1 class="display-4 text-center">Create An Account</h1>
+    <p>Please sign up using the following form:</p>
+
+    <form method="post">
+        {{ user_form | crispy }}
+        {% csrf_token %}
+        <button type="submit">Register</button>
+    </form>
+
+{% endblock content %}
