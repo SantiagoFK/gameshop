@@ -1,7 +1,8 @@
 # Games App Views
 
-from django.shortcuts import render
-from django.http import Http404
+from django.shortcuts import render, get_object_or_404
+from cart.forms import CartAddGameForm
+
 
 from .models import Game
 
@@ -11,11 +12,8 @@ def gamelist(request):
 
 
 def gamedetail(request, id):
-    try:
-        game = Game.objects.get(id=id)
-    except Game.DoesNotExist:
-        raise Http404('No such game in the database.')
+    game = get_object_or_404(Game, id=id)
+    cart_game_form = CartAddGameForm()
 
-    return render(request, 'games/gamedetail.html', {'game': game})
-
-# this can be written with the get_object_or_404 shortcut.
+    return render(request, 'games/gamedetail.html', {'game': game, 
+                                                     'cart_game_form': cart_game_form})

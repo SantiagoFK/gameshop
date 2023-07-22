@@ -7,6 +7,7 @@ quantity and price.
 '''
 
 
+from decimal import Decimal
 from games.models import Game
 from django.conf import settings
 
@@ -42,3 +43,43 @@ class Cart:
     def save(self):
         # mark the session as 'modified' to make sure it's saved
         self.session.modified = True
+        
+    def remove(self, game):
+        '''
+        remove a game from the cart
+        '''
+        game_id = str(game.id)
+        
+        if game_id in self.cart:
+            del self.cart[game_id]
+            self.save() # updates cart in the session
+            
+    def __iter__(self):
+        '''
+        iterate over the games in the cart and get the games from the database.
+        '''
+        game_ids = self.cart.keys()
+        # get the product objetcs and add them to the cart
+        games = Game.objects.filter(id__in = game_ids)
+        cart = self.cart.copy()
+        
+        for game in games:
+            cart[str(game.id)]['game'] = game
+        for item in cart.values():
+            item['price'] = Decimal(item['price'])
+            item['total_price'] = item['price'] * item['quantity']
+            yield item
+    
+    def __len__(self):
+        '''
+        count all items in the cart
+        '''
+        return sum(item['quantity'] for item in self.cart.values())
+
+    def get_total_price(self):
+        return sum(Decimal(item['price']) * item['quantity'] for item in self.cart.values())
+    
+    def clear(self):
+        # remove the cart from the session
+        del self.session[settings.CART_SESSION_ID]
+        self.save()

@@ -49,7 +49,7 @@
               <img src="{{ game.cover.url }}" class="card-img-top" alt="game cover">
             {% endif %}
 
-            <a href="{% url 'gamedetail' game.id %}" class="btn btn-primary">Buy</a>
+            <a href="{% url 'games:gamedetail' game.id %}" class="btn btn-primary">Buy</a>
           </div>
         </div>
       {% endfor %}

@@ -1,6 +1,6 @@
 # Games App models
-
 from django.db import models
+#from django.urls import reverse
 
 class Game(models.Model):
     title = models.CharField(max_length=250)
@@ -13,6 +13,7 @@ class Game(models.Model):
     
     def __str__(self):
         return self.title
+    
     
 '''
 Notes: 
