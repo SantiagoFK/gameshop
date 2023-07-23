@@ -33,13 +33,33 @@
                   <a class="nav-link" href="#">Categories</a>
                 </li>
               </ul>
-              <span class="navbar-text">
+              <span class="navbar-text mx-3">
                 {% if request.user.is_authenticated %}
                   Hello, {{ request.user.username }}!
-                  <a href="{% url 'logout' %}">Logout</a>
+                  <a href="{% url 'logout' %}" class>Logout</a>
                 {% else %}
                   <a href="{% url 'login' %}">Login</a>
+                  <a href="{% url 'register' %}">Register</a>
                 {% endif %}
+                
+              </span>
+              <!-- show cart icon -->
+              <span class="navbar-text">
+                  {% if cart|length > 0 %}
+                    <!-- show filled cart icon-->
+                    <a href="{% url 'cart:cart_detail' %}">
+                      <p class="fs-2 my-2">
+                        <i class="bi bi-bag-fill"></i>
+                      </p>
+                    </a>
+                  {% else %}
+                    <!-- show empty cart icon-->
+                    <a href="{% url 'cart:cart_detail' %}">
+                      <p class="fs-2 my-2">
+                        <i class="bi bi-bag"></i>
+                      </p>
+                    </a>
+                  {% endif %}
               </span>
             </div>
           </div>

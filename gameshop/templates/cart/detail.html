@@ -8,51 +8,57 @@
 
     <h3 class="display-4 text-center"> Your Shopping Cart </h3>
 
-    <table class="table table-dark table-striped">
-        <thead>
-          <tr>
-            <th scope="col">Game</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Price</th>
-            <th scope="col">Total</th> 
-            <th scope="col">Remove</th> 
-          </tr>
-        </thead>
-        <tbody>
-          {% for item in cart %}
-            {% with game=item.game%}
+    {% if cart|length > 0 %}
+      <!-- if there's games in cart shows a table-->
+      <table class="table table-dark table-striped">
+          <thead>
             <tr>
-                <td>{{ game.title }}</td>
-                <td>
-                  <form action="{% url 'cart:cart_add' game.id%}" method="post">
-                    {{ item.update_quantity_form.quantity }}
-                    {{ item.update_quantity_form.override }}
-                    <input type="submit" value="Update">
-                    {% csrf_token %}
-                  </form>
-                </td>
-                <td>${{ item.price }}</td>
-                <td>${{ item.total_price }}</td>
-                <td>
-                  <form action="{% url 'cart:cart_remove' game.id %}" method="post">
-                    <input type="submit" value="Remove">
-                    {% csrf_token %}
-                  </form>
-                </td>
+              <th scope="col">Game</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Price</th>
+              <th scope="col">Total</th> 
+              <th scope="col">Remove</th> 
             </tr>
-            {% endwith %}
-          {% endfor %}
-          <tr>
-            <td>Total</td>
-            <td>-</td>
-            <td>-</td>
-            <td>${{cart.get_total_price}}</td>
-          </tr>
-        </tbody>
-      </table>
-      <p>
-        <a href="{% url 'games:gamelist' %}" class="btn btn-warning">Continue Shopping</a>
-        <a href="#" class="btn btn-success">Checkout</a>
-      </p>
+          </thead>
+          <tbody>
+            {% for item in cart %}
+              {% with game=item.game%}
+              <tr>
+                  <td>{{ game.title }}</td>
+                  <td>
+                    <form action="{% url 'cart:cart_add' game.id%}" method="post">
+                      {{ item.update_quantity_form.quantity }}
+                      {{ item.update_quantity_form.override }}
+                      <input type="submit" value="Update">
+                      {% csrf_token %}
+                    </form>
+                  </td>
+                  <td>${{ item.price }}</td>
+                  <td>${{ item.total_price }}</td>
+                  <td>
+                    <form action="{% url 'cart:cart_remove' game.id %}" method="post">
+                      <input type="submit" value="Remove">
+                      {% csrf_token %}
+                    </form>
+                  </td>
+              </tr>
+              {% endwith %}
+            {% endfor %}
+            <tr>
+              <td>Total</td>
+              <td>-</td>
+              <td>-</td>
+              <td>${{cart.get_total_price}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          <a href="{% url 'games:gamelist' %}" class="btn btn-warning">Continue Shopping</a>
+          <a href="#" class="btn btn-success">Checkout</a>
+        </p>
+  {% else %}
+      <!-- no games in the cart-->
+      <p>Your cart is empty.</p>
+  {% endif %}
 
 {% endblock content %}
