@@ -1,0 +1,17 @@
+{% extends 'base/layout.html' %}
+
+{% load static %}
+
+{% block title %} Order Success {% endblock title %}
+
+{% block content %}
+
+    <h1 class="display-4 text-center"> Order Complete ! </h1>
+
+    <h3>Thank you!</h3>
+    <p>
+        Your order has been successfully completed. Your order number is
+        <strong>{{ order.id }}</strong>
+    </p>
+
+{% endblock content %}

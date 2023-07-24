@@ -1,0 +1,31 @@
+{% extends 'base/layout.html' %}
+
+{% load static %}
+
+{% block title %} Order Create {% endblock title %}
+
+{% block content %}
+
+    <h1 class="display-4 text-center"> Checkout </h1>
+
+    <h3>Your order</h3>
+    <ul>
+        {% for item in cart %}
+            {% with game=item.game %}
+            <li>
+                <p>{{ game.title }} x {{ item.quantity }}
+                <span>${{ item.total_price }}</span>
+                </p>
+            </li>
+            {% endwith %}
+        {% endfor %}
+    </ul>
+    <p>Total: ${{ cart.get_total_price }}</p>
+    
+    <form method="post">
+        {{ form.as_p }}
+        <p><input type="submit" value="Place order"></p>
+        {% csrf_token %}
+    </form>
+
+{% endblock content %}

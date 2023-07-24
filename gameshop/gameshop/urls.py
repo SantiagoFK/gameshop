@@ -9,6 +9,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('games.urls', namespace='games')),
     path('cart/', include('cart.urls', namespace='cart')),
+    path('orders/', include('orders.urls', namespace='orders')),
     path('account/', include('accounts.urls')),
     path('api/', include('api.urls')),    
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
