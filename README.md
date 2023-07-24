@@ -23,3 +23,5 @@ In progress:
 - Genre tag feature.
 - Responsive
 - Internationalization
+- HTTPS
+- Payment
