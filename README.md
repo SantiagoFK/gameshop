@@ -15,3 +15,5 @@ Features:
 - Shopping cart
 - Orders
 - RESTful API
+- Responsive
+  
