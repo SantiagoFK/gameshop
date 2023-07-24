@@ -21,3 +21,4 @@ Features:
 In progress:
 - Include AWS (Amazon Web Services) cloud Database.
 - Improve UI/UX.
+- Genre tag feature.
