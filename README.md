@@ -16,6 +16,7 @@ Features:
 - Shopping cart
 - Orders
 - RESTful API
+- Database CRUD
 
 In progress:
 - Include AWS (Amazon Web Services) cloud Database.
