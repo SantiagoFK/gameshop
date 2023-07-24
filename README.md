@@ -17,4 +17,7 @@ Features:
 - Orders
 - RESTful API
 - Responsive
-  
+
+In progress:
+- Include AWS (Amazon Web Services) cloud Database.
+- Improve UI/UX.
