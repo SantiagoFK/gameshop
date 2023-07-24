@@ -22,3 +22,4 @@ In progress:
 - Improve UI/UX.
 - Genre tag feature.
 - Responsive
+- Internationalization
