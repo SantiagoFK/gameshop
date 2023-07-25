@@ -46,7 +46,9 @@
           <div class="col-xs-12 col-sm-10 col-md-5 col-lg-3 my-4">
             <div class="card border border-success bg-black" style="width: 100%;">
               {% if game.cover %} <!-- check if there's an image cover -->
+              <a href="{% url 'games:gamedetail' game.id %}">
                 <img src="{{ game.cover.url }}" class="card-img-top" alt="game cover">
+              </a>
               {% else %}
                 <p>No image found</p>
               {% endif %}

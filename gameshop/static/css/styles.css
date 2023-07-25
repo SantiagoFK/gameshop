@@ -28,18 +28,19 @@ body
 
 .nav-link, .navbar-text, .navbar-text a, .navbar-brand
 {
+    
     text-decoration: none;
     color: white;
     font-size: 1.2em;
 }
 
-.nav-link:hover, .navbar-text a:hover
+.nav-link a:hover, .navbar-text a:hover
 {
     color: greenyellow;
-    border-bottom: 4px solid greenyellow;
+    border-bottom: 2px solid greenyellow;
 }
 
-/* GAME CARDS */
+/* HOME GAME CARDS */
 
 /* div containing the price inside each game card*/
 .priceTag
@@ -68,6 +69,9 @@ body
     transition: all 0.08s;
     cursor: pointer;
 }
+
+/* DETAILS GAME CARD*/
+
 
 /* MEDIA QUERIES */
 

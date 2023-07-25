@@ -6,22 +6,26 @@
 
 {% block content %}
 
-    <h3 class="display-4 text-center"> {{ game.title }} </h3>
+    <div class="container-fluid">
+        <div class="row">
+            <h3 class="display-4 text-center"> {{ game.title }} </h3>
+            <div class="col-11 m-auto">
+                <div class="card mb-3 border-success text-bg-dark">
+                    <img src="{{ game.cover.url }}" alt="game_cover">
+                </div>
 
-    {% if game.cover %}
-        <div class="container">
-            <img src="{{ game.cover.url }}" alt="game cover">
+                <div class="game-details-card">
+                    <h4 class="display-6"> <strong>Developer:</strong> {{ game.developer }} </h4>
+                    <h4 class="display-6"> <strong>Price:</strong> ${{ game.price }} </h4>
+                    <h4 class="display-6"> <strong>Release:</strong> {{ game.release }} </h4>    
+                </div>
+        
+                <form action="{% url 'cart:cart_add' game.id%}" method="post">
+                    {{ cart_game_form }}
+                    {% csrf_token %}
+                    <input type="submit" value="Add to cart">
+                </form>
+            </div>
         </div>
-    {% endif %}
-
-    <h4> <strong>Developer:</strong> {{ game.developer }} </h4>
-    <h4> <strong>Price:</strong> ${{ game.price }} </h4>
-    <h4> <strong>Release:</strong> {{ game.release }} </h4>
-
-    <form action="{% url 'cart:cart_add' game.id%}" method="post">
-        {{ cart_game_form }}
-        {% csrf_token %}
-        <input type="submit" value="Add to cart">
-    </form>
-
+    </div>
 {% endblock content %}
