@@ -17,12 +17,12 @@ Features:
 - Orders
 - RESTful API
 - Database CRUD
+- Responsive
 
 In progress:
 - Include AWS (Amazon Web Services) cloud Database.
 - Improve UI/UX.
 - Genre tag feature.
-- Responsive
 - Internationalization
 - HTTPS
 - Payment
