@@ -11,61 +11,52 @@
         <title>{% block title %} Game Shop App {% endblock title %}</title>
     </head>
     <body>
-      <div class="container-fluid">
 
-      
       <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <nav class="navbar navbar-expand-lg bg-primary barraNav mb-3" data-bs-theme="dark">
           <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarText">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item fs-5 me-3 mt-2 ms-2">
-                  <p>GameShop</p>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="{% url 'games:gamelist' %}">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Games</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Categories</a>
-                </li>
-              </ul>
-              
-              <span class="navbar-text mx-3">
-                {% if request.user.is_authenticated %}
-                  Hello, {{ request.user.username }}!
-                  <a href="{% url 'logout' %}" class>Logout</a>
-                {% else %}
-                  <a href="{% url 'login' %}">Login</a>
-                  <a href="{% url 'register' %}">Register</a>
-                {% endif %}
-                
-              </span>
-              <!-- show cart icon -->
-              <span class="navbar-text">
-                  {% if cart|length > 0 %}
-                    <!-- show filled cart icon-->
-                    <a href="{% url 'cart:cart_detail' %}">
-                      <p class="fs-2 my-2">
-                        <i class="bi bi-bag-fill"></i>
-                      </p>
-                    </a>
-                  {% else %}
-                    <!-- show empty cart icon-->
-                    <a href="{% url 'cart:cart_detail' %}">
-                      <p class="fs-2 my-2">
-                        <i class="bi bi-bag"></i>
-                      </p>
-                    </a>
-                  {% endif %}
-              </span>
-              
-            </div>
+              <a class="navbar-brand active fs-4 elemNav" href="{% url 'games:gamelist'%}" >Home</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                      <li class="nav-item">
+                          <a class="nav-link fs-4 elemNav" href="{% url 'games:gamelist' %}">Games</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link fs-4 elemNav" href="{% url 'games:gamelist' %}">Categories</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link fs-4 elemNav" href="{% url 'games:gamelist' %}">About</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link fs-4 elemNav" th:href="{% url 'games:gamelist' %}">Contact</a>
+                      </li>
+                  </ul>
+
+                  <span class="navbar-text mx-3 fs-5 navBarInline">
+                    {% if request.user.is_authenticated %}
+                      Hello, {{ request.user.username }}!
+                      <a href="{% url 'logout' %}">Logout</a>
+                    {% else %}
+                      <a href="{% url 'login' %}" class="mx-1">Login</a>
+                      <a href="{% url 'register' %}" class="mx-1">Register</a>
+                    {% endif %}
+
+                    {% if cart|length > 0 %}
+                      <!-- show filled cart icon-->
+                      <a href="{% url 'cart:cart_detail' %}">
+                          <i class="bi bi-bag-fill"></i>
+                      </a>
+                    {% else %}
+                      <!-- show empty cart icon-->
+                      <a href="{% url 'cart:cart_detail' %}">
+                          <i class="bi bi-bag"></i>
+                      </a>
+                    {% endif %}
+                  </span>
+              </div>
           </div>
         </nav>
       </header>
@@ -78,6 +69,15 @@
 
       <footer class="p-5 mt-3">
           <p class="lead text-center"> SFK &copy 2023 </p>
+
+          <!-- SOCIAL MEDIA ICONS -->
+          <p class="lead fs-3 text-center mx-2">
+            <i class="bi bi-whatsapp"></i>
+            <i class="bi bi-instagram"></i>
+            <i class="bi bi-twitter"></i>
+            <i class="bi bi-facebook"></i>
+          </p>
+
       </footer>
       
       <!--bootstrap-->

@@ -40,32 +40,28 @@
   <!-- GAME CARDS SECTION -->
   <section id = "gameCards">
     <div class="container-fluid">
-      
-    
-    <h3 class="display-3 text-center">Games</h3>
-    <div class="row my-4 justify-content-center">
-      {% for game in games %}
-        <div class="col-xs-12 col-sm-10 col-md-5 col-lg-3 my-4">
-          <div class="card border border-success bg-black" style="width: 100%;">
-            {% if game.cover %} <!-- check if there's an image cover -->
-              <img src="{{ game.cover.url }}" class="card-img-top" alt="game cover">
-            {% else %}
-              <p>No image found</p>
-            {% endif %}
+      <h3 class="display-3 text-center">Games</h3>
+      <div class="row my-4 justify-content-center">
+        {% for game in games %}
+          <div class="col-xs-12 col-sm-10 col-md-5 col-lg-3 my-4">
+            <div class="card border border-success bg-black" style="width: 100%;">
+              {% if game.cover %} <!-- check if there's an image cover -->
+                <img src="{{ game.cover.url }}" class="card-img-top" alt="game cover">
+              {% else %}
+                <p>No image found</p>
+              {% endif %}
 
-            <div class="priceTag">
-              <p>
-                $ {{ game.price }}
-              </p>
+              <div class="priceTag">
+                <p>
+                  $ {{ game.price }}
+                </p>
+              </div>
+              
             </div>
-            
-            <!--
-            <a href="{% url 'games:gamedetail' game.id %}" class="btn btn-primary">Buy</a>-->
           </div>
-        </div>
-      {% endfor %}
+        {% endfor %}
+      </div>
     </div>
-  </div>
   </section>
 
 {% endblock content %}
