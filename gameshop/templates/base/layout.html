@@ -7,15 +7,14 @@
         <!--bootstrap-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}?v=2">
         <title>{% block title %} Game Shop App {% endblock title %}</title>
     </head>
     <body>
-      <header>
-        <div id = "mainBanner">
-          <h1 class = "display-1 text-center">GAME SHOP</h1>
-        </div>
+      <div class="container-fluid">
 
+      
+      <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
           <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,6 +22,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item fs-5 me-3 mt-2 ms-2">
+                  <p>GameShop</p>
+                </li>
                 <li class="nav-item">
                   <a class="nav-link" aria-current="page" href="{% url 'games:gamelist' %}">Home</a>
                 </li>
@@ -33,6 +35,7 @@
                   <a class="nav-link" href="#">Categories</a>
                 </li>
               </ul>
+              
               <span class="navbar-text mx-3">
                 {% if request.user.is_authenticated %}
                   Hello, {{ request.user.username }}!
@@ -61,21 +64,22 @@
                     </a>
                   {% endif %}
               </span>
+              
             </div>
           </div>
         </nav>
       </header>
 
       <main>
-          {% block content %}
+            {% block content %}
 
-          {% endblock content %}
+            {% endblock content %}
       </main>
 
-      <footer>
+      <footer class="p-5 mt-3">
           <p class="lead text-center"> SFK &copy 2023 </p>
       </footer>
-
+      
       <!--bootstrap-->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     </body>

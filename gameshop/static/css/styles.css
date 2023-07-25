@@ -1,4 +1,3 @@
-/*TODO: use media queries to fit the height of carousel on each breakpoint*/
 /*TODO: delete code repetition in backgrounds on navbar and mainBanner*/
 
 /* GENERAL */
@@ -10,30 +9,16 @@ body
     background: linear-gradient(90deg, rgba(11,7,43,1) 100%, rgba(116,1,161,1) 100%, rgba(0,0,0,1) 100%, rgba(30,1,47,1) 100%);
 }
 
-
-/*to make all images same height within the carousel*/
-
 /* CAROUSEL */
 
 .carousel-item{
     width: 100%; 
-    height: 500px;
     overflow: hidden;
 }
 .carousel-item img{
     width: 100%;
     height: 100%;
 }
-
-/* HEADER BANNER */
-#mainBanner
-{
-    background: rgb(11,7,43);
-    background: linear-gradient(90deg, rgba(11,7,43,1) 100%, rgba(116,1,161,1) 100%, rgba(0,0,0,1) 100%, rgba(30,1,47,1) 100%);
-    padding: 1px;
-    height: 90px;
-}
-
 /* NAVBAR */
 
 .navbar{
@@ -41,18 +26,105 @@ body
     background: linear-gradient(90deg, rgba(11,7,43,1) 100%, rgba(116,1,161,1) 100%, rgba(0,0,0,1) 100%, rgba(30,1,47,1) 100%);
 }
 
-.nav-link, .navbar-text, .navbar-text a
+.nav-link, .navbar-text, .navbar-text a, .navbar-brand
 {
+    text-decoration: none;
     color: white;
     font-size: 1.2em;
 }
 
-.nav-link:hover
+.nav-link:hover, .navbar-text a:hover
 {
-    border-bottom: 4px solid white;
+    color: greenyellow;
+    border-bottom: 4px solid greenyellow;
 }
 
+/* GAME CARDS */
 
+/* div containing the price inside each game card*/
+.priceTag
+{
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 35%;
+    height: 22%;
+    font-size: 1.2em;
+    background:rgba(0, 82, 214, 0.7);
+    color: greenyellow;
+    font-weight: bolder;
+}
 
+.card-img-top
+{
+    width: 100%;
+    height: 150px;
+}
 
+.card-img-top:hover
+{
+    border: 4px solid greenyellow;
+    transition: all 0.08s;
+    cursor: pointer;
+}
 
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 400px){
+    .carousel-item{
+        height: 250px;
+    }
+
+    .priceTag
+    {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 400px){
+    .carousel-item{
+        height: 330px;
+    }
+
+    .priceTag
+    {
+        width: 40%;
+    }
+
+    .card-img-top
+    {
+        height: 200px;
+    }
+}
+
+@media screen and (min-width: 768px)
+{
+    .carousel-item{
+        height: 430px;
+    }
+
+    .priceTag
+    {
+        width: 50%;
+    }
+
+    .card-img-top
+    {
+        height: 150px;
+    }
+}
+
+@media screen and (min-width: 960px){
+    .carousel-item{
+        height: 500px;
+    }
+
+}
+
+@media screen and (min-width: 1200px)
+{
+    .carousel-item{
+        height: 550px;
+    }
+}
